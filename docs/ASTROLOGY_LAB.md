@@ -1,0 +1,48 @@
+# 12별자리 + MBTI 초간단 그래프
+
+별자리 12개가 각각 두 가지 공통 성향 노드로 연결된다. 기존 MBTI와 같은 노드를 공유하므로 `MBTI → 공통 성향 ← 별자리` 경로를 탐색할 수 있다. 공통 성향에는 `MbtiTrait`와 `SharedTrait` 라벨이 함께 붙는다. 기존 MBTI 웹앱은 그대로 동작한다.
+
+이 매핑은 그래프 실습용으로 직접 정한 가상 조합이다. 실제 점성술 체계를 재현하거나 성격·궁합을 검증한 결과가 아니다. 생일, 천체 계산, LLM은 사용하지 않는다. 별자리 이름으로 직접 조회한다.
+
+## 저장
+
+기존 `.env.mbti` 접속 설정을 사용한다. 저장소 루트에서 실행한다.
+
+```powershell
+.venv/Scripts/python -m mbti_lab.astrology
+```
+
+MBTI 데이터도 함께 준비하므로 독립 실행이 가능하다. 순차 재실행은 MERGE로 같은 노드와 관계를 재사용한다. 다른 식당 데이터는 삭제하지 않는다. 매핑을 바꿔 예전 관계를 없애려면 별도 정리가 필요하며, 이 명령은 관계를 자동 삭제하지 않는다.
+
+## Browser에서 Graph 보기
+
+DB를 `.env.mbti`의 DB와 동일하게 선택한다. 다음 쿼리는 각각 따로 실행한다.
+
+전체 별자리:
+
+```cypher
+MATCH p = (:ZodiacSign)-[:HAS_TRAIT]->(:SharedTrait)
+RETURN p;
+```
+
+INTJ와 물병자리의 공통 성향:
+
+```cypher
+MATCH p = (:MbtiType {code:'INTJ'})-[:HAS_TRAIT]->(:SharedTrait)
+          <-[:HAS_TRAIT]-(:ZodiacSign {name:'물병자리'})
+RETURN p;
+```
+
+예시에서는 `이유 살피기`와 `가능성 탐색`을 공유한다. 이것은 매핑의 결과이며 궁합 점수가 아니다.
+
+성향에서 일상 제안과 두 체계의 출처까지 함께 탐색:
+
+```cypher
+MATCH p = (:MbtiType {code:'INTJ'})-[:HAS_TRAIT]->(t:SharedTrait)
+          <-[:HAS_TRAIT]-(z:ZodiacSign {name:'물병자리'})
+MATCH q = (t)-[:SUGGESTS]->(:MbtiInsight)-[:FROM_SOURCE]->(:MbtiSource)
+MATCH r = (z)-[:FROM_SOURCE]->(:AstrologySource)
+RETURN p, q, r;
+```
+
+현재 별자리 기능은 Neo4j Browser 실습용이다. 웹앱의 선택 화면은 MBTI만 제공한다. APOC와 노드 병합은 이 단계에서 필요 없다.
