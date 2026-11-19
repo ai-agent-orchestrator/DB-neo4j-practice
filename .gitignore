@@ -1,6 +1,7 @@
 .venv/
 .env
 .env.delivery
+.env.mbti
 __pycache__/
 *.pyc
 .pytest_cache/
