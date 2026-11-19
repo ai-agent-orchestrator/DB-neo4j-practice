@@ -1,8 +1,16 @@
-# 오늘의 작은 고민, 별다른 시선으로.
+# Explore Your Little Universe
+
+**한국어** | [English](README.en.md)
+
+## [바로 놀아보기 · 설치 없이 열기](https://ai-agent-orchestrator.github.io/explore-your-little-universe/)
+
+루미와 이야기하고, MBTI·별자리 그래프와 원문 근거를 함께 살펴보세요. 최신 Chrome·Edge에서 이용하며, 첫 실제 검색에는 임베딩 모델 다운로드가 필요합니다.
+
+### 오늘의 작은 고민, 별다른 시선으로.
 
 ![Lumi — A little insight. One small action.](docs/images/lumi.svg)
 
-**Daily Personality Action Playground**
+**An MBTI & Astrology Daily Action Playground**
 
 **A playful daily-action lab inspired by MBTI and astrology.**
 
@@ -10,9 +18,9 @@
 
 **Serverless · Google LiteRT-LM · On-device search**
 
-React 검색 버전은 [`feat/serverless-react-litert-rag` 브랜치](https://github.com/ai-agent-orchestrator/DB-neo4j-practice/tree/feat/serverless-react-litert-rag)에서 실행한다. 기존 Neo4j 실습 코드는 아래에서 안내한다.
+React 검색 버전은 [`feat/serverless-react-litert-rag` 브랜치](https://github.com/ai-agent-orchestrator/explore-your-little-universe/tree/feat/serverless-react-litert-rag)에서 실행한다. 기존 Neo4j 실습 코드는 아래에서 안내한다.
 
-작은 별 친구 **루미(Lumi)**와 일상 고민을 탐색하는 실습이다. MBTI·별자리라는 정형 그래프와 직접 작성한 비정형 상황 글 30개를 연결한다. 성격을 판정하기보다 관련된 이야기를 찾고 오늘 해볼 작은 행동을 발견한다.
+작은 별 친구 **루미(Lumi)**와 일상 고민을 탐색하는 실습이다. MBTI·별자리라는 정형 그래프와 직접 작성한 비정형 상황 글 60개를 연결한다. 성격을 판정하기보다 관련된 이야기를 찾고 오늘 해볼 작은 행동을 발견한다.
 
 ## 정적 React + 브라우저 LiteRT-LM 검색 (추천)
 
@@ -35,7 +43,7 @@ npm ci
 npm run dev
 ```
 
-표시되는 로컬 주소(기본 http://127.0.0.1:5173)를 최신 Chrome 또는 Edge에서 연다. 처음에는 저장된 질문의 **예제 결과**를 보여준다. 검색 버튼을 누르면 약 165MB의 공개 모델을 다운로드·검증한 뒤 실제 질문을 기기에서 임베딩한다. 브라우저 캐시 공간이 있으면 모델을 재사용한다. 기기 성능과 메모리에 따라 준비 시간이 달라진다.
+표시되는 로컬 주소(기본 http://127.0.0.1:5173)를 WebGPU가 활성화된 최신 Chrome 또는 Edge에서 연다. 처음에는 저장된 질문의 **예제 결과**를 보여준다. 검색 버튼을 누르면 약 165MB의 공개 모델을 다운로드·검증한 뒤 실제 질문을 기기에서 임베딩한다. 브라우저 캐시 공간이 있으면 모델을 재사용한다. 기기 성능과 메모리에 따라 준비 시간이 달라진다.
 
 - **벡터만:** 의미가 가까운 상황 글 3개
 - **벡터 + 그래프:** 동일한 검색 결과에서 공통 성향을 따라 다른 글과 행동 제안으로 확장
@@ -54,7 +62,7 @@ npm run build
 
 실행 중 Neo4j를 직접 조회하는 서비스는 아니다. Neo4j에서 변경한 데이터는 재적재·재내보내기·재빌드해야 반영된다. 현재 콘텐츠는 직접 작성한 예시이며 LLM 추출이나 자동 상담 답변은 사용하지 않는다. 외부 호스팅 무료 한도는 서비스마다 다르다.
 
-[구축 코드·모델·주말 검증 안내](https://github.com/ai-agent-orchestrator/DB-neo4j-practice/blob/feat/serverless-react-litert-rag/docs/STATIC_REACT_RAG.md) · [비정형 상황 카드 원문](https://github.com/ai-agent-orchestrator/DB-neo4j-practice/blob/feat/serverless-react-litert-rag/mbti_lab/scenarios.py) · [Neo4j 적재·내보내기 코드](https://github.com/ai-agent-orchestrator/DB-neo4j-practice/blob/feat/serverless-react-litert-rag/mbti_lab/rag_seed.py)
+[구축 코드·모델·주말 검증 안내](https://github.com/ai-agent-orchestrator/explore-your-little-universe/blob/feat/serverless-react-litert-rag/docs/STATIC_REACT_RAG.md) · [비정형 상황 카드 원문](https://github.com/ai-agent-orchestrator/explore-your-little-universe/blob/feat/serverless-react-litert-rag/mbti_lab/scenarios.py) · [Neo4j 적재·내보내기 코드](https://github.com/ai-agent-orchestrator/explore-your-little-universe/blob/feat/serverless-react-litert-rag/mbti_lab/rag_seed.py)
 
 # Neo4j 실습 — MBTI + 12별자리 그래프
 
