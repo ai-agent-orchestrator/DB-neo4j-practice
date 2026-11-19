@@ -1,3 +1,7 @@
+**Serverless · Google LiteRT-LM · On-device Search · Playground**
+
+**Light. Free. Fun.**
+
 # Explore Your Little Universe
 
 **한국어** | [English](README.en.md)
@@ -5,6 +9,10 @@
 ## [바로 놀아보기 · 설치 없이 열기](https://ai-agent-orchestrator.github.io/explore-your-little-universe/)
 
 루미와 이야기하고, MBTI·별자리 그래프와 원문 근거를 함께 살펴보세요. 최신 Chrome·Edge에서 이용하며, 첫 실제 검색에는 임베딩 모델 다운로드가 필요합니다.
+
+**[내 Neo4j Browser에서 전체 그래프 쿼리 열기](http://localhost:7474/browser/?cmd=edit&arg=MATCH%20p%20%3D%20%28a%29-%5Br%5D-%3E%28b%29%0AWHERE%20type%28r%29%20IN%20%5B%27HAS_TRAIT%27%2C%27FROM_CHUNK%27%2C%27FROM_DOCUMENT%27%2C%27SUGGESTS%27%5D%0A%20%20AND%20any%28label%20IN%20labels%28a%29%20WHERE%20label%20IN%20%5B%27MbtiType%27%2C%27ZodiacSign%27%2C%27SharedTrait%27%2C%27RagChunk%27%2C%27RagTip%27%5D%29%0A%20%20AND%20any%28label%20IN%20labels%28b%29%20WHERE%20label%20IN%20%5B%27SharedTrait%27%2C%27RagChunk%27%2C%27RagTip%27%2C%27RagDocument%27%5D%29%0ARETURN%20p%0ALIMIT%20500%3B)** · **[처음 사용하는 사람: 데이터 넣는 방법](docs/OPEN_IN_NEO4J.md)**
+
+각자 Neo4j를 시작하고, 최초 한 번 공개 예시 데이터를 넣은 뒤 링크를 사용하세요. 본인의 로컬 Browser를 열며, 비밀번호나 다른 사람의 DB 접속 정보는 포함하지 않습니다.
 
 ### 오늘의 작은 고민, 별다른 시선으로.
 
@@ -16,7 +24,6 @@
 
 *A little insight. One small action.*
 
-**Serverless · Google LiteRT-LM · On-device search**
 
 React 검색 버전은 [`feat/serverless-react-litert-rag` 브랜치](https://github.com/ai-agent-orchestrator/explore-your-little-universe/tree/feat/serverless-react-litert-rag)에서 실행한다. 기존 Neo4j 실습 코드는 아래에서 안내한다.
 
