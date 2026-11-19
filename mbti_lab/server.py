@@ -7,6 +7,7 @@ from pathlib import Path
 from urllib.parse import urlparse
 
 from .data import TYPES, TRAITS, result
+from .database import project_database
 
 ROOT = Path(__file__).resolve().parent
 SEED = '''
@@ -46,7 +47,7 @@ def main():
         required = ['NEO4J_URI', 'NEO4J_PASSWORD', 'NEO4J_DATABASE']
         if any(not os.getenv(key) for key in required):
             parser.error('Complete .env.mbti first, or use --demo for a UI preview.')
-        database = os.environ['NEO4J_DATABASE']
+        database = project_database(os.environ['NEO4J_DATABASE'])
         driver = GraphDatabase.driver(os.environ['NEO4J_URI'], auth=(
             os.getenv('NEO4J_USERNAME', 'neo4j'), os.environ['NEO4J_PASSWORD']))
         driver.verify_connectivity()

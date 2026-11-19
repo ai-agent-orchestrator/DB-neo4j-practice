@@ -6,7 +6,7 @@
 
 ## 저장
 
-기존 `.env.mbti` 접속 설정을 사용한다. 저장소 루트에서 실행한다.
+`.env.mbti`의 `NEO4J_DATABASE=mbti-zodiac` 접속 설정을 사용한다. 식당 DB와 분리된 전용 DB를 먼저 준비하고 저장소 루트에서 실행한다. [DB 분리 절차](DATABASE_SEPARATION.md)
 
 ```powershell
 .venv/Scripts/python -m mbti_lab.astrology
@@ -16,7 +16,7 @@ MBTI 데이터도 함께 준비하므로 독립 실행이 가능하다. 순차 �
 
 ## Browser에서 Graph 보기
 
-DB를 `.env.mbti`의 DB와 동일하게 선택한다. 다음 쿼리는 각각 따로 실행한다.
+Browser에서 `:use mbti-zodiac`를 실행한다. 다음 쿼리는 각각 따로 실행한다.
 
 전체 별자리:
 

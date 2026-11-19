@@ -1,6 +1,7 @@
 """Seed a fictional 12-sign/MBTI crossover for graph learning; no predictions."""
 import os
 from pathlib import Path
+from .database import project_database
 
 # Deliberately authored toy mappings, not empirical personality claims.
 SIGNS = [
@@ -37,7 +38,7 @@ def main():
     required = ['NEO4J_URI', 'NEO4J_PASSWORD', 'NEO4J_DATABASE']
     if any(not os.getenv(key) for key in required):
         raise SystemExit('Complete .env.mbti first.')
-    database = os.environ['NEO4J_DATABASE']
+    database = project_database(os.environ['NEO4J_DATABASE'])
     mbti_rows = [{'code': code, 'key': key, 'title': TRAITS[key][0],
                   'text': TRAITS[key][1], 'tip': TRAITS[key][2]}
                  for code in TYPES for key in code]
