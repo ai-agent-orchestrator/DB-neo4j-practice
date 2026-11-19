@@ -1,3 +1,61 @@
+# 오늘의 작은 고민, 별다른 시선으로.
+
+![Lumi — A little insight. One small action.](docs/images/lumi.svg)
+
+**Daily Personality Action Playground**
+
+**A playful daily-action lab inspired by MBTI and astrology.**
+
+*A little insight. One small action.*
+
+**Serverless · Google LiteRT-LM · On-device search**
+
+React 검색 버전은 [`feat/serverless-react-litert-rag` 브랜치](https://github.com/ai-agent-orchestrator/DB-neo4j-practice/tree/feat/serverless-react-litert-rag)에서 실행한다. 기존 Neo4j 실습 코드는 아래에서 안내한다.
+
+작은 별 친구 **루미(Lumi)**와 일상 고민을 탐색하는 실습이다. MBTI·별자리라는 정형 그래프와 직접 작성한 비정형 상황 글 30개를 연결한다. 성격을 판정하기보다 관련된 이야기를 찾고 오늘 해볼 작은 행동을 발견한다.
+
+## 정적 React + 브라우저 LiteRT-LM 검색 (추천)
+
+별도 Spring·Python·Ollama 서버나 API 키 없이 동작한다. **Neo4j는 데이터 구축·검증**, **React와 LiteRT-LM은 브라우저 검색·그래프 확장**을 맡는다. 복잡한 답변이 필요하면 근거 프롬프트를 복사해 Gemini에 직접 가져갈 수 있다.
+
+```text
+구축: 상황 글 → LiteRT-LM 임베딩 → Neo4j 벡터·그래프 → 공개 예시 스냅샷
+실행: React → 브라우저 LiteRT-LM 질문 임베딩 → 벡터 검색 → 그래프 확장
+```
+
+### 바로 갖고 놀기
+
+Node.js 22.12 이상을 준비하고 저장소 루트에서 실행한다. 브라우저 실행에는 Neo4j를 켤 필요가 없다.
+
+```powershell
+git fetch origin
+git switch feat/serverless-react-litert-rag
+cd frontend
+npm ci
+npm run dev
+```
+
+표시되는 로컬 주소(기본 http://127.0.0.1:5173)를 최신 Chrome 또는 Edge에서 연다. 처음에는 저장된 질문의 **예제 결과**를 보여준다. 검색 버튼을 누르면 약 165MB의 공개 모델을 다운로드·검증한 뒤 실제 질문을 기기에서 임베딩한다. 브라우저 캐시 공간이 있으면 모델을 재사용한다. 기기 성능과 메모리에 따라 준비 시간이 달라진다.
+
+- **벡터만:** 의미가 가까운 상황 글 3개
+- **벡터 + 그래프:** 동일한 검색 결과에서 공통 성향을 따라 다른 글과 행동 제안으로 확장
+- **근거 보기:** 원문, 문서 ID, 실제 연결 경로 확인
+- **Gemini용 프롬프트:** 원할 때 직접 복사한다. 질문을 자동 전송하지 않는다.
+
+### 정적 배포
+
+```powershell
+cd frontend
+npm ci
+npm run build
+```
+
+`frontend/dist`를 정적 호스팅에 올린다. 프로젝트 하위 경로에서도 동작하도록 상대 경로로 빌드한다. 모델은 고정된 Hugging Face 버전에서 다운로드하며 SHA-256을 확인한다. `.env`, DB 접속 정보, API 키를 프론트엔드에 넣지 않는다. 모델과 런타임 다운로드를 제외한 검색은 기기 안에서 수행한다.
+
+실행 중 Neo4j를 직접 조회하는 서비스는 아니다. Neo4j에서 변경한 데이터는 재적재·재내보내기·재빌드해야 반영된다. 현재 콘텐츠는 직접 작성한 예시이며 LLM 추출이나 자동 상담 답변은 사용하지 않는다. 외부 호스팅 무료 한도는 서비스마다 다르다.
+
+[구축 코드·모델·주말 검증 안내](https://github.com/ai-agent-orchestrator/DB-neo4j-practice/blob/feat/serverless-react-litert-rag/docs/STATIC_REACT_RAG.md) · [비정형 상황 카드 원문](https://github.com/ai-agent-orchestrator/DB-neo4j-practice/blob/feat/serverless-react-litert-rag/mbti_lab/scenarios.py) · [Neo4j 적재·내보내기 코드](https://github.com/ai-agent-orchestrator/DB-neo4j-practice/blob/feat/serverless-react-litert-rag/mbti_lab/rag_seed.py)
+
 # Neo4j 실습 — MBTI + 12별자리 그래프
 
 MBTI와 12별자리를 공통 성향으로 연결하고 Neo4j에서 관계를 탐색하는 학습용 프로젝트다. 콘텐츠는 직접 작성한 재미용 예시이며 공식 성격 검사나 진단, 검증된 점성술 해석이 아니다. LLM이나 OpenAI API 없이 실행할 수 있다.
