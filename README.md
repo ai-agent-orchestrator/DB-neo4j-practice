@@ -4,6 +4,7 @@
 
 - [개발안과 공부할 포인트](docs/TWO_ARTICLE_MVP_PLAN.md)
 - [단일 실행 스크립트](test_kg_pipeline.py)
+- [3대 DB 협업 실험 개발안](docs/THREE_DB_COLLAB_PLAN.md): SQLite·Chroma·Neo4j 역할 분담, 합성 조건 필터·가격 계산·근거 추적 설계.
 
 ## 실행
 
