@@ -1,0 +1,22 @@
+{
+  "name": "mindmap-static-rag",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "predev": "node scripts/prepare-runtime.mjs",
+    "prebuild": "node scripts/prepare-runtime.mjs",
+    "dev": "vite --host 127.0.0.1",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "test": "node --test src/search.test.js"
+  },
+  "dependencies": {
+    "@litert-lm/core": "^0.19.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "vite": "^8.3.8"
+  }
+}

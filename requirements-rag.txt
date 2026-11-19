@@ -1,0 +1,2 @@
+-r requirements.txt
+litert-lm-api==0.18.0
