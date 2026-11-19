@@ -1,5 +1,11 @@
 # Neo4j GraphRAG — 조문 2개 연동 실습
 
+- [12별자리 + MBTI 그래프](docs/ASTROLOGY_LAB.md): 별자리 12개를 공통 성향으로 연결하고 Neo4j Browser에서 확인한다.
+
+- [MBTI Graph Lab — 마음의 지도](mbti_lab/README.md): MBTI 선택 → 성향·제안 그래프를 보여주는 로컬 웹앱. Neo4j 적재·조회 및 DB 없는 화면 미리보기 지원.
+
+- [배달비 → Chunk → Document 반복 실습](docs/DELIVERY_LAB.md): Git으로 쿼리를 관리하고 Neo4j에 예시 데이터를 적재·조회한다. OpenAI 키 없이 실행 가능.
+
 합성 조문 2개로 분할 → 비동기 적재 → Document 메타데이터 → Entity 근거 역추적을 검증한다. 실제 법령·환자 자료가 아닌 학습용 문장이다.
 
 - [개발안과 공부할 포인트](docs/TWO_ARTICLE_MVP_PLAN.md)
