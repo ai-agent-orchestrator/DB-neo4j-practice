@@ -6,8 +6,9 @@
 
 ```powershell
 .venv/Scripts/python -m pip install -r requirements.txt
-Copy-Item .env.mbti.example .env.mbti
+notepad .env.mbti
 # .env.mbti에 Neo4j 비밀번호 입력. DB 이름은 mbti-zodiac 고정
+# 필요한 환경변수 항목은 저장소 루트 README 참고
 # Neo4j system DB에서 CREATE DATABASE `mbti-zodiac` IF NOT EXISTS WAIT 실행
 .venv/Scripts/python -m mbti_lab.server --seed
 ```

@@ -14,7 +14,7 @@ Neo4j Desktop의 프로젝트 표시 이름과 실제 DB 이름은 별개다. �
 CREATE DATABASE `mbti-zodiac` IF NOT EXISTS WAIT;
 ```
 
-`.env.mbti.example`을 `.env.mbti`로 복사하고 비밀번호를 설정한다. `NEO4J_DATABASE=mbti-zodiac`를 유지한다. 별자리 적재 명령은 MBTI도 함께 준비한다.
+로컬에 `.env.mbti`를 직접 만들고 저장소 루트 README의 환경변수 항목과 본인 비밀번호를 입력한다. `NEO4J_DATABASE=mbti-zodiac`를 유지한다. `.env` 계열 파일은 저장소에 포함하지 않는다. 별자리 적재 명령은 MBTI도 함께 준비한다.
 
 ```powershell
 .venv/Scripts/python -m mbti_lab.astrology

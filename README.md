@@ -13,13 +13,22 @@ Python 3.12와 로컬 Neo4j를 준비하고 전용 데이터베이스 `mbti-zodi
 ```powershell
 python -m venv .venv
 .venv/Scripts/python -m pip install -r requirements.txt
-Copy-Item .env.mbti.example .env.mbti
+notepad .env.mbti
 # .env.mbti에 Neo4j URI, 사용자 이름, 비밀번호 설정. DB는 mbti-zodiac 고정
 .venv/Scripts/python -m mbti_lab.astrology
 .venv/Scripts/python -m mbti_lab.server
 ```
 
 웹앱: http://127.0.0.1:8016
+
+로컬에서만 사용하는 `.env.mbti`에 다음 항목을 입력한다. 비밀번호는 본인 Neo4j 비밀번호로 설정한다. `.env` 계열 파일은 저장소에 포함하지 않는다.
+
+```text
+NEO4J_URI=bolt://localhost:7687
+NEO4J_USERNAME=neo4j
+NEO4J_PASSWORD=본인_비밀번호
+NEO4J_DATABASE=mbti-zodiac
+```
 
 별자리 적재 명령은 MBTI 데이터도 함께 준비한다. 순차 재실행은 같은 노드와 관계를 재사용한다. 비밀번호가 들어 있는 `.env.mbti`는 Git에서 제외된다.
 
