@@ -25,7 +25,7 @@
 *A little insight. One small action.*
 
 
-React 검색 버전은 [`feat/serverless-react-litert-rag` 브랜치](https://github.com/ai-agent-orchestrator/explore-your-little-universe/tree/feat/serverless-react-litert-rag)에서 실행한다. 기존 Neo4j 실습 코드는 아래에서 안내한다.
+React 검색 버전은 `main`에 포함되어 있다. `frontend` 변경을 `main`에 반영하면 GitHub Actions가 검사·빌드 후 공개 사이트에 자동 배포한다. 기존 Neo4j 실습 코드는 아래에서 안내한다.
 
 작은 별 친구 **루미(Lumi)**와 일상 고민을 탐색하는 실습이다. MBTI·별자리라는 정형 그래프와 직접 작성한 비정형 상황 글 60개를 연결한다. 성격을 판정하기보다 관련된 이야기를 찾고 오늘 해볼 작은 행동을 발견한다.
 
@@ -44,7 +44,7 @@ Node.js 22.12 이상을 준비하고 저장소 루트에서 실행한다. 브라
 
 ```powershell
 git fetch origin
-git switch feat/serverless-react-litert-rag
+git switch main
 cd frontend
 npm ci
 npm run dev

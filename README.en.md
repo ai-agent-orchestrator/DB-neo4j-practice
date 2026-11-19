@@ -25,7 +25,7 @@ Meet **Lumi**, a little star companion. Explore everyday dilemmas, discover conn
 
 ## Static React + browser LiteRT-LM search
 
-The React edition lives on the [`feat/serverless-react-litert-rag` branch](https://github.com/ai-agent-orchestrator/explore-your-little-universe/tree/feat/serverless-react-litert-rag).
+The React edition is included in `main`. Changes to `frontend` on `main` are tested, built, and deployed automatically by GitHub Actions.
 
 No Spring server, Python web server, Ollama, database credentials, or paid API is required to run the page. Neo4j is used to build and inspect the graph. The published page reads an exported public snapshot and performs embedding, cosine search, and graph traversal on the visitor's device.
 
@@ -40,7 +40,7 @@ Use Node.js 22.12+ and a recent Chrome or Edge browser with WebGPU enabled.
 
 ```powershell
 git fetch origin
-git switch feat/serverless-react-litert-rag
+git switch main
 cd frontend
 npm ci
 npm run dev
