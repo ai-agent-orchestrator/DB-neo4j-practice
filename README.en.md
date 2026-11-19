@@ -1,3 +1,7 @@
+**Serverless · Google LiteRT-LM · On-device Search · Playground**
+
+**Light. Free. Fun.**
+
 # Explore Your Little Universe
 
 ### A fresh perspective on today's little dilemmas.
@@ -8,11 +12,14 @@
 
 Meet Lumi, try a daily dilemma, and inspect the knowledge graph and source evidence. Use a current Chrome/Edge browser with WebGPU; the first actual search downloads an embedding model.
 
+**[Open the full graph query in your own Neo4j Browser](http://localhost:7474/browser/?cmd=edit&arg=MATCH%20p%20%3D%20%28a%29-%5Br%5D-%3E%28b%29%0AWHERE%20type%28r%29%20IN%20%5B%27HAS_TRAIT%27%2C%27FROM_CHUNK%27%2C%27FROM_DOCUMENT%27%2C%27SUGGESTS%27%5D%0A%20%20AND%20any%28label%20IN%20labels%28a%29%20WHERE%20label%20IN%20%5B%27MbtiType%27%2C%27ZodiacSign%27%2C%27SharedTrait%27%2C%27RagChunk%27%2C%27RagTip%27%5D%29%0A%20%20AND%20any%28label%20IN%20labels%28b%29%20WHERE%20label%20IN%20%5B%27SharedTrait%27%2C%27RagChunk%27%2C%27RagTip%27%2C%27RagDocument%27%5D%29%0ARETURN%20p%0ALIMIT%20500%3B)** · **[First-time setup and graph import](docs/OPEN_IN_NEO4J.md)**
+
+Start your local Neo4j instance and import the public example graph once. The link opens your own localhost and contains no password or another person's database connection.
+
 ![Lumi — A little insight. One small action.](docs/images/lumi.svg)
 
 **An MBTI & Astrology Daily Action Playground**
 
-**Serverless · Google LiteRT-LM · On-device search**
 
 Meet **Lumi**, a little star companion. Explore everyday dilemmas, discover connected perspectives, and try one small action. MBTI and astrology are playful fictional settings here, not validated predictions or clinical assessments.
 
