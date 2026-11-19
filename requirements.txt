@@ -1,0 +1,4 @@
+neo4j-graphrag==1.24.0
+neo4j==6.4.1
+openai==3.55.1
+python-dotenv==1.2.4
